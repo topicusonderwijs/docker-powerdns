@@ -1,5 +1,5 @@
 FROM alpine:3.15
-#MAINTAINER Christoph Wiechert <wio@psitrax.de>
+MAINTAINER Christoph Wiechert <wio@psitrax.de>
 
 ENV POWERDNS_VERSION=4.6.0 \
     MYSQL_DEFAULT_AUTOCONF=true \
@@ -9,8 +9,8 @@ ENV POWERDNS_VERSION=4.6.0 \
     MYSQL_DEFAULT_PASS="root" \
     MYSQL_DEFAULT_DB="pdns"
 
-RUN apk --update add --virtual --no-cache bash libpq sqlite-libs libstdc++ libgcc mariadb-client mariadb-connector-c lua-dev curl-dev && \
-    apk add --virtual --no-cache build-deps \
+RUN apk --update add bash libpq sqlite-libs libstdc++ libgcc mariadb-client mariadb-connector-c lua-dev curl-dev && \
+    apk add --virtual build-deps \
       g++ make mariadb-dev postgresql-dev sqlite-dev curl boost-dev mariadb-connector-c-dev && \
     curl -sSL https://downloads.powerdns.com/releases/pdns-$POWERDNS_VERSION.tar.bz2 | tar xj -C /tmp && \
     cd /tmp/pdns-$POWERDNS_VERSION && \
@@ -24,8 +24,7 @@ RUN apk --update add --virtual --no-cache bash libpq sqlite-libs libstdc++ libgc
     apk del --purge build-deps && \
     apk add boost-libs && \
     mv /tmp/lib* /usr/lib/ && \
-    rm -rf /tmp/pdns-$POWERDNS_VERSION && \
-    rm -rf /var/cache/apk/*
+    rm -rf /tmp/pdns-$POWERDNS_VERSION /var/cache/apk/*
 
 ADD schema.sql pdns.conf /etc/pdns/
 ADD entrypoint.sh /

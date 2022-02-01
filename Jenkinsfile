@@ -26,7 +26,7 @@ node(){
     dockerTags.push("4.6.0" + suffix)
     dockerTags.push("4.6" + suffix)
 
-    dockerfile.validate {}
+    //dockerfile.validate {}
 
     // Bouw de Dockerfile en return een img object.
     def img = dockerfile.build {
