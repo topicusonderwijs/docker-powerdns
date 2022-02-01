@@ -41,7 +41,6 @@ node(){
           tags = dockerTags
           distribute = dockerDistribute
       }
-
     }
-
+  }
 }
