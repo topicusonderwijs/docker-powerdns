@@ -10,7 +10,7 @@ ENV POWERDNS_VERSION=4.6.0 \
     MYSQL_DEFAULT_DB="pdns"
 
 RUN apk --update add --virtual --no-cache bash libpq sqlite-libs libstdc++ libgcc mariadb-client mariadb-connector-c lua-dev curl-dev && \
-    apk add --virtual build-deps \
+    apk add --virtual --no-cache build-deps \
       g++ make mariadb-dev postgresql-dev sqlite-dev curl boost-dev mariadb-connector-c-dev && \
     curl -sSL https://downloads.powerdns.com/releases/pdns-$POWERDNS_VERSION.tar.bz2 | tar xj -C /tmp && \
     cd /tmp/pdns-$POWERDNS_VERSION && \
