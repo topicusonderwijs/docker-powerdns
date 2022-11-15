@@ -23,8 +23,8 @@ node(){
     // Checkout de git repository
     git.checkout { }
 
-    dockerTags.push("4.6.0" + suffix)
-    dockerTags.push("4.6" + suffix)
+    dockerTags.push("4.7.2" + suffix)
+    dockerTags.push("4.7" + suffix)
 
     //dockerfile.validate {}
 
