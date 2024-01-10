@@ -1,0 +1,30 @@
+{
+  extends: [
+    "local>topicusonderwijs/renovate-config:default.json5",
+    "schedule:weekly"
+  ],
+  semanticCommits: "enabled",
+  enabledManagers: ["dockerfile", "regex"],
+  regexManagers: [
+    {
+      fileMatch: ["^version.properties$"],
+      matchStrings: [
+        "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.+?_VERSION = (?<currentValue>.*)\\s"
+      ],
+      versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
+      extractVersionTemplate: "^auth-(?<version>.*)$"
+    }
+  ],
+  packageRules: [
+    {
+      matchPackageNames: ["alpine"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: false
+    },
+    {
+      matchPackageNames: ["PowerDNS/pdns"],
+      matchUpdateTypes: ["patch"],
+      automerge: false
+    }
+  ]
+}
