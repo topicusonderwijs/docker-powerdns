@@ -19,12 +19,12 @@
     {
       matchPackageNames: ["alpine"],
       matchUpdateTypes: ["minor", "patch"],
-      automerge: false
+      automerge: true
     },
     {
       matchPackageNames: ["PowerDNS/pdns"],
       matchUpdateTypes: ["patch"],
-      automerge: false
+      automerge: true
     }
   ]
 }
