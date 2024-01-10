@@ -36,7 +36,7 @@ node() {
     // Bouw de Dockerfile en return een img object.
     def img = dockerfile.build {
       name = dockerContainerName
-      args = "--build-arg=\"POWERDNS_VERSION=${pdnsRecursorVersion}\""
+      args = "--build-arg=\"POWERDNS_VERSION=${pdnsVersion}\""
     }
 
     if (env.BRANCH_NAME == "master") {
