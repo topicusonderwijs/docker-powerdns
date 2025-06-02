@@ -1,4 +1,4 @@
-FROM alpine:3.21
+FROM alpine:3.22
 MAINTAINER Christoph Wiechert <wio@psitrax.de>
 
 ARG POWERDNS_VERSION
